@@ -1,18 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/* Jeremy L. Shepherd IT3047 Spring 2021 */
+
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MovieList.Models;
 
 namespace MovieList.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: HomeController
-        public ActionResult Index()
+        private MovieContext context { get; set; }
+
+        public HomeController(MovieContext ctx)
         {
-            return View();
+            context = ctx;
+        }
+
+        // GET: HomeController
+        public IActionResult Index()
+        {
+            var movies = context.Movies.Include(m => m.Genre).OrderBy(m => m.Name).ToList();
+            return View(movies);
         }       
     }
 }
