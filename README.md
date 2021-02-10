@@ -2,4 +2,4 @@
 ### Jeremy L. Shepherd
 Following Exercise 4-1 to build a Movie List application.
 
-Started with an empty template to get practice in builing out the components manually.
+Started with an empty template to get practice in building out the components manually.
